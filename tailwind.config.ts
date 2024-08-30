@@ -37,6 +37,7 @@ const config: Config = {
       },
       colors: {
         main: "EEF2F9",
+        button: "#0142ac",
         primary: "#262626",
         secondary: "#82A4B1",
         "secondary-light": "#DAE8EE",

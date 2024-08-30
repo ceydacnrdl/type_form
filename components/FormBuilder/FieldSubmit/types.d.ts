@@ -1,4 +1,4 @@
 interface FieldSubmitProps {
-  label: string;
+  label: string | JSX.Element;
   isDisabled: boolean;
 }

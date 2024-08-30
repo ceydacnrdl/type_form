@@ -31,15 +31,16 @@ export default function FormBuilder({
               placeholder={field.placeholder}
               register={register as UseFormRegister<any>}
               name={fieldName}
-              error={errors[fieldName]}
-              options={field.options ?? []}
+              error={errors[fieldName] as any}
+              options={field.options ?? ([] as any)}
               validation={field.validation}
               isDisabled={formState.isSubmitting}
+              string={undefined}
             />
           );
         })}
 
-        <FieldSubmit label="Submit" isDisabled={false} />
+        <FieldSubmit label="OK" isDisabled={false} />
       </form>
     </div>
   );

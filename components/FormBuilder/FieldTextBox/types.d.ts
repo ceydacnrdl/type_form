@@ -7,8 +7,8 @@ import {
 
 interface FieldTextBoxProps {
   id: string;
-  label: string;
-  description?: string;
+  label: string | JSX.Element;
+  description?: string | JSX.Element;
   placeholder?: string;
   register: UseFormRegister<any>;
   name: string;
@@ -17,22 +17,23 @@ interface FieldTextBoxProps {
 }
 
 interface FieldSchema {
-  type: "text" | "select" | "submit";
-  description?: string;
+  type: "text" | "select" | "submit" | "radio";
+  description?: string | JSX.Element;
   placeholder?: string;
-  label: string;
+
+  label: string | JSX.Element;
   validation?: any;
   options?: Option[]; // For select fields
 }
 
 interface Option {
   value: string;
-  label: string;
+  label: string | JSX.Element;
 }
 
 interface SelectFieldSchema {
   label: string;
-  description?: string;
+  description?: string | JSX.Element;
   options: Option[];
   validation?: any;
 }
