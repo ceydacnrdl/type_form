@@ -11,8 +11,15 @@ export default function FieldTextBox({
 }: FieldTextBoxProps) {
   return (
     <div className="form-control">
-      <label htmlFor={id}>{label}</label>
-      <input type="text" id={id} {...register(name, validation)} />
+      <label className="block mb-2" htmlFor={id}>
+        {label}
+      </label>
+      <input
+        className="block w-full bg-transparent "
+        type="text"
+        id={id}
+        {...register(name, validation)}
+      />
       {error && error.message && typeof error.message === "string" && (
         <p className="error">{error.message}</p>
       )}
