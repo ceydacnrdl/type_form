@@ -56,8 +56,8 @@ const EmblaCarousel: React.FC<PropType> = ({ FORM_SCHEMA, options }) => {
       <div className="embla__viewport" ref={emblaRef}>
         <div className="embla__container my-auto">
           {formSlides.map((slide, index) => (
-            <div className="embla__slide px-3" key={index}>
-              <div className="embla__slide__number text-2xl mt-48">
+            <div className="embla__slide px-3 flex" key={index}>
+              <div className="embla__slide__number text-2xl">
                 {slide.content}
               </div>
             </div>

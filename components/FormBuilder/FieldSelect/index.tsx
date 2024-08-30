@@ -32,7 +32,7 @@ export default function FieldSelect({
         ))}
       </select>
       {error && error.message && typeof error.message === "string" && (
-        <p className="error">{error.message}</p>
+        <p className="error text-base mt-2">{error.message}</p>
       )}
     </div>
   );
