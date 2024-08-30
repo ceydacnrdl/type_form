@@ -35,7 +35,7 @@ const EmblaCarousel: React.FC<PropType> = ({ FORM_SCHEMA, options }) => {
     }));
 
     if (currentIndex === Object.keys(FORM_SCHEMA).length - 1) {
-      console.log("Final submission data:", { ...formData, [fieldName]: data });
+      console.log("Final data:", { ...formData, [fieldName]: data });
     } else {
       onNextButtonClick();
     }
@@ -58,9 +58,6 @@ const EmblaCarousel: React.FC<PropType> = ({ FORM_SCHEMA, options }) => {
           {formSlides.map((slide, index) => (
             <div className="embla__slide" key={index}>
               <div className="embla__slide__number text-2xl mt-48">
-                {slide.title}
-              </div>
-              <div className="embla__slide__content text-2xl text-gray-600 mt-4">
                 {slide.content}
               </div>
             </div>

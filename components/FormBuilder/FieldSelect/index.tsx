@@ -5,6 +5,7 @@ export default function FieldSelect({
   id,
   label,
   register,
+  description,
   name,
   options,
   error,
@@ -12,8 +13,17 @@ export default function FieldSelect({
 }: FieldSelectProps) {
   return (
     <div className="form-control">
-      <label htmlFor={id}>{label}</label>
-      <select id={id} {...register(name, validation)}>
+      <label className="block mb-2" htmlFor={id}>
+        {label}
+      </label>
+      <label className="block my-5 text-gray-500" htmlFor={id}>
+        {description}
+      </label>
+      <select
+        className="block w-full bg-transparent shadow-md !border-0"
+        id={id}
+        {...register(name, validation)}
+      >
         <option value="">Select an option</option>
         {options.map((option) => (
           <option key={option.value} value={option.value}>

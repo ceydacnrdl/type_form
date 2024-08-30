@@ -27,6 +27,8 @@ export default function FormBuilder({
               key={fieldName}
               id={fieldName}
               label={field.label}
+              description={field.description}
+              placeholder={field.placeholder}
               register={register as UseFormRegister<any>}
               name={fieldName}
               error={errors[fieldName]}

@@ -47,7 +47,7 @@ body {
   }
   .embla__slide__number {
     border-radius: 1.8rem;
-    display: flex;
+    /* display: flex; */
     align-items: center;
     justify-content: center;
     height: auto;

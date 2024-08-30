@@ -8,6 +8,8 @@ import {
 interface FieldTextBoxProps {
   id: string;
   label: string;
+  description?: string;
+  placeholder?: string;
   register: UseFormRegister<any>;
   name: string;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
@@ -16,6 +18,8 @@ interface FieldTextBoxProps {
 
 interface FieldSchema {
   type: "text" | "select" | "submit";
+  description?: string;
+  placeholder?: string;
   label: string;
   validation?: any;
   options?: Option[]; // For select fields
@@ -28,6 +32,7 @@ interface Option {
 
 interface SelectFieldSchema {
   label: string;
+  description?: string;
   options: Option[];
   validation?: any;
 }
