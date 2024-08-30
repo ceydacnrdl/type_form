@@ -1,24 +1,14 @@
 import React from "react";
-import { EmblaOptionsType } from "embla-carousel";
 import {
   NextButton,
   PrevButton,
   usePrevNextButtons,
 } from "./EmblaCarouselArrowButtons";
 import useEmblaCarousel from "embla-carousel-react";
-import FormBuilder, { FormSchema } from "../FormBuilder"; // Import FormSchema type from FormBuilder
+import FormBuilder, { FormSchema } from "../FormBuilder";
+import type { PropType } from "./types";
 
-interface SlideType {
-  title: string;
-  content: React.ReactNode;
-}
-
-interface PropType {
-  slides: SlideType[];
-  options?: EmblaOptionsType;
-}
-
-const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
+const EmblaCarousel: React.FC<PropType> = ({ FORM_SCHEMA, options }) => {
   const [emblaRef, emblaApi] = useEmblaCarousel(options);
 
   const {
@@ -28,28 +18,6 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
     onNextButtonClick,
   } = usePrevNextButtons(emblaApi);
 
-  // Define the FORM_SCHEMA with each field
-  const FORM_SCHEMA: FormSchema = {
-    username: {
-      label: "Username",
-      validation: { required: "Username is required" },
-    },
-    email: {
-      label: "Email",
-      validation: { required: "Email is required" },
-    },
-    channel: {
-      label: "Channel",
-      options: [
-        { value: "tech", label: "Tech" },
-        { value: "sports", label: "Sports" },
-        { value: "news", label: "News" },
-      ],
-      validation: { required: "Channel is required" },
-    },
-  };
-
-  // Prepare each field for individual slides
   const formSlides = Object.keys(FORM_SCHEMA).map((fieldName) => ({
     title: FORM_SCHEMA[fieldName].label,
     content: (
@@ -62,6 +30,8 @@ const EmblaCarousel: React.FC<PropType> = ({ slides, options }) => {
       />
     ),
   }));
+
+  console.log("formSlides", formSlides);
 
   return (
     <section className="embla">

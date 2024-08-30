@@ -1,19 +1,5 @@
 import React from "react";
-import {
-  UseFormRegister,
-  FieldError,
-  Merge,
-  FieldErrorsImpl,
-} from "react-hook-form";
-
-interface FieldTextBoxProps {
-  id: string;
-  label: string;
-  register: UseFormRegister<any>;
-  name: string;
-  error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
-  validation?: any;
-}
+import type { FieldTextBoxProps } from "./types";
 
 export default function FieldTextBox({
   id,

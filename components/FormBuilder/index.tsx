@@ -1,34 +1,11 @@
 import React from "react";
 import { useForm, UseFormRegister } from "react-hook-form";
-import FieldTextBox from "./FieldTextBox";
 import FieldSubmit from "./FieldSubmit";
-import FieldSelect from "./FieldSelect";
-
-interface FieldSchema {
-  label: string;
-  validation?: any;
-  options?: Option[]; // For select fields
-}
-
-interface Option {
-  value: string;
-  label: string;
-}
-
-interface SelectFieldSchema {
-  label: string;
-  options: Option[];
-  validation?: any;
-}
+import type { FieldSchema, FormBuilderProps } from "./FieldTextBox/types";
+import ComponentMapping from "./ComponentFactory";
 
 export interface FormSchema {
   [key: string]: FieldSchema;
-}
-
-interface FormBuilderProps {
-  schema: FormSchema;
-  onSubmit: (data: any) => void;
-  defaultValues?: any;
 }
 
 export default function FormBuilder({
@@ -44,34 +21,20 @@ export default function FormBuilder({
       <form onSubmit={handleSubmit(onSubmit)} noValidate>
         {Object.keys(schema).map((fieldName) => {
           const field = schema[fieldName];
-          if ("options" in field) {
-            // If options are present, render FieldSelect
-            const selectField = field as SelectFieldSchema;
-            return (
-              <FieldSelect
-                key={fieldName}
-                id={fieldName}
-                label={selectField.label}
-                register={register as UseFormRegister<any>}
-                name={fieldName}
-                options={selectField.options}
-                error={errors[fieldName]}
-                validation={selectField.validation}
-              />
-            );
-          } else {
-            return (
-              <FieldTextBox
-                key={fieldName}
-                id={fieldName}
-                label={field.label}
-                register={register as UseFormRegister<any>}
-                name={fieldName}
-                error={errors[fieldName]}
-                validation={field.validation}
-              />
-            );
-          }
+          const Component = ComponentMapping[field.type];
+          return (
+            <Component
+              key={fieldName}
+              id={fieldName}
+              label={field.label}
+              register={register as UseFormRegister<any>}
+              name={fieldName}
+              error={errors[fieldName]}
+              options={field.options ?? []}
+              validation={field.validation}
+              isDisabled={formState.isSubmitting}
+            />
+          );
         })}
 
         <FieldSubmit label="Submit" isDisabled={false} />
