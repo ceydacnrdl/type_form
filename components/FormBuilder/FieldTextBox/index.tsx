@@ -1,5 +1,6 @@
 import React from "react";
 import type { FieldTextBoxProps } from "./types";
+import clsx from "clsx";
 
 export default function FieldTextBox({
   id,
@@ -10,10 +11,11 @@ export default function FieldTextBox({
   name,
   error,
   validation,
+  classNameLabel,
 }: FieldTextBoxProps) {
   return (
     <div className="form-control">
-      <label className="block mb-2" htmlFor={id}>
+      <label className={clsx("block mb-2", classNameLabel)} htmlFor={id}>
         {label}
       </label>
       <label className="block my-5 text-gray-500" htmlFor={id}>

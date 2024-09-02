@@ -14,13 +14,14 @@ interface FieldTextBoxProps {
   name: string;
   error?: FieldError | Merge<FieldError, FieldErrorsImpl<any>>;
   validation?: any;
+  classNameLabel?: string;
 }
 
 interface FieldSchema {
-  type: "text" | "select" | "submit" | "radio";
+  type: "text" | "select" | "submit" | "radio" | "contactInfo";
   description?: string | JSX.Element;
   placeholder?: string;
-
+  classNameLabel?: string;
   label: string | JSX.Element;
   validation?: any;
   options?: Option[]; // For select fields

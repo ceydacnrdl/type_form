@@ -5,17 +5,14 @@ import type { FieldTextBoxProps } from "./FieldTextBox/types";
 import FieldTextBox from "./FieldTextBox";
 import FieldRadio from "./FieldRadioButton";
 import { FieldRadioProps } from "./FieldRadioButton/types";
+import FieldContactInfo from "./FieldContactInfo";
 
-const ComponentMapping: {
-  text: React.FC<FieldTextBoxProps>;
-  select: React.FC<FieldSelectProps>;
-  submit: React.FC<FieldSubmitProps>;
-  radio: React.FC<FieldRadioProps>;
-} = {
+const ComponentMapping: { [key: string]: React.FC<any> } = {
   text: FieldTextBox,
   select: FieldSelect,
   submit: FieldSubmit,
   radio: FieldRadio,
+  contactInfo: FieldContactInfo,
 };
 
 export default ComponentMapping;

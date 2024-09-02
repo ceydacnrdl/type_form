@@ -12,10 +12,8 @@ interface Option {
 
 interface FieldSelectProps {
   id: string;
-
-  label: string | JSX.Element;
-  description;
-  string;
+  label: string;
+  description: string;
   register: UseFormRegister<any>;
   name: string;
   options: Option[];

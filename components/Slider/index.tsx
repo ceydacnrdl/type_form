@@ -9,24 +9,20 @@ import { FormSchema } from "../FormBuilder";
 const OPTIONS: EmblaOptionsType = { axis: "y" };
 
 const FORM_SCHEMA: FormSchema = {
+  contactInfo: {
+    type: "contactInfo",
+    label: "Contact Information",
+    description: "Please provide your contact information.",
+    classNameLabel: "bg-yellow-500",
+    validation: {
+      firstName: { required: "First name is required" },
+      lastName: { required: "Last name is required" },
+    },
+  },
   radioAsk: {
     type: "radio",
-    label: (
-      <label
-        dangerouslySetInnerHTML={{
-          __html:
-            "Please be aware of our investment criteria: We focus on early stage investments in scalable business models of any kind, typically investing up to €2m initially.<br/><br/>Do you fit in here?",
-        }}
-      />
-    ),
-    description: (
-      <label
-        dangerouslySetInnerHTML={{
-          __html:
-            'If the answer is "Yes" we\'d love to hear from you. If the answer is "No" you\'re welcome to continue but we may not be a good match.',
-        }}
-      />
-    ),
+    label: "Radio section label value?",
+    description: "Please select one of the options below.",
     options: [
       { value: "yes", label: "Yes" },
       { value: "no", label: "No" },

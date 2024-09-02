@@ -35,7 +35,6 @@ export default function FormBuilder({
               options={field.options ?? ([] as any)}
               validation={field.validation}
               isDisabled={formState.isSubmitting}
-              string={undefined}
             />
           );
         })}
