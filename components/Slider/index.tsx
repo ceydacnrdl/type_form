@@ -5,6 +5,7 @@ import EmblaCarousel from "./EmblaCarousel";
 import { EmblaOptionsType } from "embla-carousel";
 import { title } from "process";
 import { FormSchema } from "../FormBuilder";
+import { useFetchAllComponents } from "@/hooks/useFetchAllComponents";
 
 const OPTIONS: EmblaOptionsType = { axis: "y" };
 
@@ -74,5 +75,8 @@ const FORM_SCHEMA: FormSchema = {
 };
 
 export default function Slider() {
-  return <EmblaCarousel FORM_SCHEMA={FORM_SCHEMA} options={OPTIONS} />;
+  const { data, isLoading } = useFetchAllComponents();
+  const schema = data ? data : FORM_SCHEMA;
+
+  return <EmblaCarousel FORM_SCHEMA={schema} options={OPTIONS} />;
 }

@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 
-export const QUERY_KEY = ["todos"];
+export const QUERY_KEY = ["components"];
 
 interface ToDo {
   id: number;
@@ -14,9 +14,10 @@ export function useFetchAllComponents() {
     queryKey: QUERY_KEY,
     queryFn: async () => {
       try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
+        const response = await fetch("/component", {});
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
         return response.json();
       } catch {
         return null;
