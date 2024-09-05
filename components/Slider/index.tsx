@@ -10,14 +10,43 @@ import { useFetchAllComponents } from "@/hooks/useFetchAllComponents";
 const OPTIONS: EmblaOptionsType = { axis: "y" };
 
 const FORM_SCHEMA: FormSchema = {
+  email: {
+    type: "text",
+    placeholder: "Type your answer here.aOSDGVpğIKASDOPgvujs<ıofuj..",
+    description: "",
+    label:
+      "Alright, here we go. What’s your full name? This question is required.*",
+    validation: { required: "Please fill this in" },
+  },
+  phone: {
+    type: "phone",
+    label: "Phone Number",
+    description: "Please provide your phone number.",
+    validation: { required: "Phone number is required" },
+  },
   contactInfo: {
     type: "contactInfo",
     label: "Contact Information",
     description: "Please provide your contact information.",
     classNameLabel: "bg-yellow-500",
     validation: {
-      firstName: { required: "First name is required" },
-      lastName: { required: "Last name is required" },
+      firstName: {
+        type: "text",
+        label: "First Name",
+        placeholder: "Jane",
+        required: "First name is required",
+      },
+      lastName: {
+        type: "text",
+        label: "Last Name",
+        placeholder: "Smith",
+        required: "Last name is required",
+      },
+      phone: {
+        type: "phone",
+        label: "Phone Number",
+        required: "Phone number is required",
+      },
     },
   },
   radioAsk: {
@@ -74,6 +103,7 @@ const FORM_SCHEMA: FormSchema = {
   },
 };
 
+console.log("FORM_SCHEMA", FORM_SCHEMA);
 export default function Slider() {
   const { data, isLoading } = useFetchAllComponents();
   const schema = data ? data : FORM_SCHEMA;

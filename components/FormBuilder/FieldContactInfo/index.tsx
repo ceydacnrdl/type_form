@@ -1,6 +1,8 @@
 import React from "react";
 import { UseFormRegister } from "react-hook-form";
 import FieldTextBox from "../FieldTextBox";
+import FieldPhone from "../FieldPhone";
+import ComponentMapping from "../ComponentFactory";
 
 function FieldContactInfo({
   id,
@@ -9,33 +11,34 @@ function FieldContactInfo({
   register,
   name,
   error,
+  control,
   validation,
-  classNameLabel,
 }: FieldContactInfoProps) {
+  console.log(validation);
+
   return (
     <div>
       <label>{label}</label>
       <p>{description}</p>
-      <FieldTextBox
-        id={`${id}_firstName`}
-        label="First Name"
-        placeholder="Enter your first name"
-        register={register}
-        name={`${name}.firstName`}
-        error={error?.firstName}
-        validation={validation?.firstName}
-        classNameLabel="bg-red"
-      />
-      <FieldTextBox
-        id={`${id}_lastName`}
-        label="Last Name"
-        placeholder="Enter your last name"
-        register={register}
-        name={`${name}.lastName`}
-        error={error?.lastName}
-        validation={validation?.lastName}
-        classNameLabel="bg-red"
-      />
+
+      {Object.keys(validation).map((key) => {
+        const field = validation[key];
+        const Component = ComponentMapping[field.type];
+        return (
+          <Component
+            key={key}
+            id={`${id}_${key}`}
+            label={field.label || key}
+            placeholder={field.placeholder}
+            register={register}
+            name={`${name}.${key}`}
+            error={error?.[key]}
+            validation={field}
+            control={control}
+            classNameLabel="bg-red"
+          />
+        );
+      })}
     </div>
   );
 }

@@ -13,7 +13,9 @@ export default function FormBuilder({
   onSubmit,
   defaultValues = {},
 }: FormBuilderProps) {
-  const { register, handleSubmit, formState } = useForm({ defaultValues });
+  const { register, handleSubmit, formState, control } = useForm({
+    defaultValues,
+  });
   const { errors } = formState;
 
   return (
@@ -34,6 +36,7 @@ export default function FormBuilder({
               error={errors[fieldName] as any}
               options={field.options ?? ([] as any)}
               validation={field.validation}
+              control={control}
               isDisabled={formState.isSubmitting}
             />
           );

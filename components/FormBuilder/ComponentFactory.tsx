@@ -6,6 +6,7 @@ import FieldTextBox from "./FieldTextBox";
 import FieldRadio from "./FieldRadioButton";
 import { FieldRadioProps } from "./FieldRadioButton/types";
 import FieldContactInfo from "./FieldContactInfo";
+import FieldPhone from "./FieldPhone";
 
 const ComponentMapping: { [key: string]: React.FC<any> } = {
   text: FieldTextBox,
@@ -13,6 +14,7 @@ const ComponentMapping: { [key: string]: React.FC<any> } = {
   submit: FieldSubmit,
   radio: FieldRadio,
   contactInfo: FieldContactInfo,
+  phone: FieldPhone,
 };
 
 export default ComponentMapping;

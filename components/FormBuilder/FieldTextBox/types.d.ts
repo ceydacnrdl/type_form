@@ -18,7 +18,7 @@ interface FieldTextBoxProps {
 }
 
 interface FieldSchema {
-  type: "text" | "select" | "submit" | "radio" | "contactInfo";
+  type: "text" | "select" | "submit" | "radio" | "contactInfo" | "phone";
   description?: string | JSX.Element;
   placeholder?: string;
   classNameLabel?: string;
